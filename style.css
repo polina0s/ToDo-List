@@ -1,0 +1,113 @@
+@import url(/src/fonts/fonts.css);
+@import url(/node_modules/normalize.css/);
+
+:root {
+  /* FONTS */
+  --headerFont: ClimateCrisis;
+  --taskFont: Dosis;
+
+  /* COLORS */
+  --background: #fff0f5;
+}
+
+html {
+  background: var(--background);
+}
+
+.header {
+  text-align: center;
+  font: 70px var(--headerFont);
+  margin: 0;
+  margin: 50px 0px 50px 0px;
+}
+
+@media screen and (max-width: 1339px) {
+  .header {
+    font-size: 50px;
+    margin: 40px 0px 40px 0px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    font-size: 40px;
+    margin: 20px 0px 20px 0px;
+  }
+}
+
+.taskInput {
+  display: flex;
+  justify-content: center;
+}
+
+.taskInput_text {
+  width: 700px;
+  height: 70px;
+  padding: 0px 20px 0px 20px;
+  margin-right: 10px;
+  font: 40px var(--taskFont);
+  border: none;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 1339px) {
+  .taskInput_text {
+    width: 500px;
+    height: 50px;
+    padding: 0px 10px 0px 10px;
+    margin-right: 5px;
+    font-size: 25px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .taskInput_text {
+    width: 400px;
+    height: 40px;
+    padding: 0px 5px 0px 5px;
+    margin-right: 5px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+}
+
+.taskInput_buttonAdd {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1339px) {
+  .taskInput_buttonAdd {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .taskInput_buttonAdd {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.taskInput_buttonAdd-img {
+  width: 50px;
+  height: 50px;
+}
+
+@media screen and (max-width: 1339px) {
+  .taskInput_buttonAdd-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .taskInput_buttonAdd-img {
+    width: 30px;
+    height: 30px;
+  }
+}

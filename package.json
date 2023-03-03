@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
-  }
+  },
+  "main": "index.js",
+  "author": "polina0s <polina.osintseva000@gmail.com>",
+  "license": "MIT"
 }

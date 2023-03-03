@@ -8,6 +8,8 @@
 
   /* COLORS */
   --background: #fff0f5;
+  --darkPink: rgb(255, 182, 206);
+  --white: #ffffff;
 }
 
 html {
@@ -38,6 +40,19 @@ html {
 .taskInput {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1339px) {
+  .taskInput {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .taskInput {
+    margin-bottom: 30px;
+  }
 }
 
 .taskInput_text {
@@ -109,5 +124,114 @@ html {
   .taskInput_buttonAdd-img {
     width: 30px;
     height: 30px;
+  }
+}
+
+.task_checkbox-custom {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.task_checkbox-custom + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.task_checkbox-custom + label::before {
+  content: "";
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 2px solid var(--darkPink);
+  border-radius: 15px;
+  margin-right: 0.5em;
+  background-color: var(--darkPink);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+@media screen and (max-width: 1339px) {
+  .task_checkbox-custom + label::before {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_checkbox-custom + label::before {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+  }
+}
+
+.task_checkbox-custom:checked + label::before {
+  background-color: var(--background);
+  background-image: url(./public/checked.png);
+}
+
+/* при наведении на checkbox */
+.task_checkbox-custom:not(:disabled):not(:checked) + label:hover::before {
+  border-color: var(--background);
+}
+/* checkbox в фокусе */
+.task_checkbox-custom:focus + label::before {
+  box-shadow: 0 0 0 0.2rem var(--white);
+}
+
+.task {
+  display: flex;
+  justify-content: center;
+}
+
+.task_text {
+  height: 40px;
+  width: 300px;
+  background-color: var(--darkPink);
+  border-radius: 15px;
+  position: relative;
+}
+
+@media screen and (max-width: 1339px) {
+  .task_text {
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_text {
+    height: 20px;
+    width: 300px;
+    border-radius: 5px;
+  }
+}
+
+.task_textString {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font: 20px var(--taskFont);
+}
+
+@media screen and (max-width: 1339px) {
+  .task_textString {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_textString {
+    font-size: 10px;
   }
 }

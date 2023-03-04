@@ -8,6 +8,7 @@
 
   /* COLORS */
   --background: #fff0f5;
+  --mediumPink: rgb(253, 194, 214);
   --darkPink: rgb(255, 182, 206);
   --white: #ffffff;
 }
@@ -18,15 +19,15 @@ html {
 
 .header {
   text-align: center;
-  font: 70px var(--headerFont);
+  font: 60px var(--headerFont);
   margin: 0;
-  margin: 50px 0px 50px 0px;
+  margin: 40px 0px 40px 0px;
 }
 
 @media screen and (max-width: 1339px) {
   .header {
     font-size: 50px;
-    margin: 40px 0px 40px 0px;
+    margin: 30px 0px 30px 0px;
   }
 }
 
@@ -40,27 +41,27 @@ html {
 .taskInput {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 1339px) {
-  .taskInput {
-    margin-bottom: 40px;
-  }
-}
-
-@media screen and (max-width: 767px) {
   .taskInput {
     margin-bottom: 30px;
   }
 }
 
+@media screen and (max-width: 767px) {
+  .taskInput {
+    margin-bottom: 20px;
+  }
+}
+
 .taskInput_text {
   width: 700px;
-  height: 70px;
+  height: 50px;
   padding: 0px 20px 0px 20px;
-  margin-right: 10px;
-  font: 40px var(--taskFont);
+  margin: 0px 5px 0px 0px;
+  font: 30px var(--taskFont);
   border: none;
   border-radius: 25px;
 }
@@ -68,62 +69,64 @@ html {
 @media screen and (max-width: 1339px) {
   .taskInput_text {
     width: 500px;
-    height: 50px;
-    padding: 0px 10px 0px 10px;
-    margin-right: 5px;
+    height: 40px;
+    padding: 0px 15px 0px 15px;
+    margin: 0px 3px 0px 0px;
     font-size: 25px;
-    border-radius: 10px;
+    border-radius: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .taskInput_text {
     width: 400px;
-    height: 40px;
-    padding: 0px 5px 0px 5px;
-    margin-right: 5px;
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 2px 0px 0px;
     font-size: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
   }
 }
 
 .taskInput_buttonAdd {
-  width: 70px;
-  height: 70px;
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
 }
 
 @media screen and (max-width: 1339px) {
   .taskInput_buttonAdd {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 40px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .taskInput_buttonAdd {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 30px;
   }
 }
 
 .taskInput_buttonAdd-img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (max-width: 1339px) {
   .taskInput_buttonAdd-img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .taskInput_buttonAdd-img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 }
 
@@ -142,14 +145,14 @@ html {
 .task_checkbox-custom + label::before {
   content: "";
   display: inline-block;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
   flex-grow: 0;
   border: 2px solid var(--darkPink);
-  border-radius: 15px;
-  margin-right: 0.5em;
-  background-color: var(--darkPink);
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: var(--background);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
@@ -157,17 +160,17 @@ html {
 
 @media screen and (max-width: 1339px) {
   .task_checkbox-custom + label::before {
-    width: 28px;
-    height: 28px;
-    border-radius: 10px;
+    width: 26px;
+    height: 26px;
+    margin-right: 7px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .task_checkbox-custom + label::before {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
   }
 }
 
@@ -178,7 +181,7 @@ html {
 
 /* при наведении на checkbox */
 .task_checkbox-custom:not(:disabled):not(:checked) + label:hover::before {
-  border-color: var(--background);
+  border-color: var(--white);
 }
 /* checkbox в фокусе */
 .task_checkbox-custom:focus + label::before {
@@ -192,25 +195,28 @@ html {
 
 .task_text {
   height: 40px;
-  width: 300px;
+  width: 700px;
   background-color: var(--darkPink);
-  border-radius: 15px;
+  border-radius: 20px;
   position: relative;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 1339px) {
   .task_text {
     height: 30px;
-    width: 300px;
-    border-radius: 10px;
+    width: 500px;
+    border-radius: 15px;
+    margin-right: 7px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .task_text {
-    height: 20px;
-    width: 300px;
-    border-radius: 5px;
+    height: 27px;
+    width: 400px;
+    border-radius: 14px;
+    margin-right: 5px;
   }
 }
 
@@ -226,12 +232,112 @@ html {
 
 @media screen and (max-width: 1339px) {
   .task_textString {
-    font-size: 15px;
+    font-size: 17px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .task_textString {
-    font-size: 10px;
+    font-size: 15px;
+  }
+}
+
+.task_deleteButton {
+  border: none;
+  background-color: transparent;
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1339px) {
+  .task_deleteButton {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_deleteButton {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.task_deleteButton:hover {
+  background: var(--darkPink);
+}
+
+.task_deleteButton:focus {
+  border: 2px solid var(--mediumPink);
+}
+
+.task_deleteButton-img {
+  width: 30px;
+  height: 38px;
+}
+
+@media screen and (max-width: 1339px) {
+  .task_deleteButton-img {
+    width: 22px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_deleteButton-img {
+    width: 19px;
+    height: 25px;
+  }
+}
+
+.task_editButton {
+  border: none;
+  background-color: transparent;
+  width: 38px;
+  height: 38px;
+}
+
+@media screen and (max-width: 1339px) {
+  .task_editButton {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_editButton {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.task_editButton:hover {
+  background: var(--darkPink);
+  border-radius: 50%;
+}
+
+.task_editButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--mediumPink);
+  border-radius: 50%;
+}
+
+.task_editButton-img {
+  width: 38px;
+  height: 38px;
+}
+
+@media screen and (max-width: 1339px) {
+  .task_editButton-img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .task_editButton-img {
+    width: 25px;
+    height: 25px;
   }
 }

@@ -10,37 +10,45 @@
   <body>
     <p class="header">To do :</p>
     <div class="taskInput">
-      <input type="text" class="taskInput_text" placeholder="write a task..." />
-      <button class="taskInput_buttonAdd">
+      <input
+        type="text"
+        class="taskInput_text"
+        id="taskInput_text"
+        placeholder="write a task..."
+      />
+      <button class="taskInput_buttonAdd" id="taskInput_buttonAdd">
         <img src="/public/add1.png" alt="add" class="taskInput_buttonAdd-img" />
       </button>
     </div>
-    <div class="task">
-      <div class="task_checkbox">
-        <input
-          type="checkbox"
-          class="task_checkbox-custom"
-          id="checkboxCustom"
-        />
-        <label for="checkboxCustom"></label>
-      </div>
-      <div class="task_text">
-        <p class="task_textString">task</p>
-      </div>
-      <button class="task_deleteButton">
-        <image
-          src="/public/delete.png"
-          alt="delete task"
-          class="task_deleteButton-img"
-        />
-      </button>
-      <button class="task_editButton">
-        <image
-          src="/public/edit.png"
-          alt="edit task"
-          class="task_editButton-img"
-        />
-      </button>
+    <div class="tasksList" id="tasksList">
+      <!-- <div class="task">
+         <div class="task_checkbox">
+          <input
+            type="checkbox"
+            class="task_checkbox-custom"
+            id="checkboxCustom"
+          />
+          <label for="checkboxCustom"></label>
+        </div>
+        <div class="task_text">
+          <p class="task_textString">task</p>
+        </div>
+        <button class="task_deleteButton">
+          <image
+            src="/public/delete.png"
+            alt="delete task"
+            class="task_deleteButton-img"
+          />
+        </button>
+        <button class="task_editButton">
+          <image
+            src="/public/edit.png"
+            alt="edit task"
+            class="task_editButton-img"
+          />
+        </button> 
+      </div> -->
     </div>
+    <script src="main.js"></script>
   </body>
 </html>

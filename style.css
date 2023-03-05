@@ -90,11 +90,21 @@ html {
 
 .taskInput_buttonAdd {
   border: none;
+  outline: none;
+  padding: 0;
   background-color: transparent;
   width: 40px;
   height: 50px;
   display: flex;
   align-items: center;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  display: block;
+}
+
+.taskInput_buttonAdd:hover {
+  background-color: var(--darkPink);
 }
 
 @media screen and (max-width: 1339px) {
@@ -112,23 +122,25 @@ html {
 }
 
 .taskInput_buttonAdd-img {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 35px;
 }
 
 @media screen and (max-width: 1339px) {
   .taskInput_buttonAdd-img {
-    width: 30px;
-    height: 30px;
+    width: 23px;
+    height: 28px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .taskInput_buttonAdd-img {
-    width: 25px;
-    height: 25px;
+    width: 16px;
+    height: 20px;
   }
 }
+
+/* TASK STRING */
 
 .task_checkbox-custom {
   position: absolute;
@@ -199,7 +211,7 @@ html {
   background-color: var(--darkPink);
   border-radius: 20px;
   position: relative;
-  margin-right: 10px;
+  margin-right: 7px;
 }
 
 @media screen and (max-width: 1339px) {
@@ -207,15 +219,13 @@ html {
     height: 30px;
     width: 500px;
     border-radius: 15px;
-    margin-right: 7px;
+    margin-right: 5px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .task_text {
-    height: 27px;
     width: 400px;
-    border-radius: 14px;
     margin-right: 5px;
   }
 }
@@ -236,108 +246,74 @@ html {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .task_textString {
-    font-size: 15px;
-  }
-}
-
 .task_deleteButton {
   border: none;
+  outline: none;
   background-color: transparent;
   width: 38px;
   height: 38px;
-  margin-right: 10px;
+  margin-right: 7px;
+  padding: 0;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1339px) {
   .task_deleteButton {
     width: 28px;
     height: 28px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .task_deleteButton {
-    width: 25px;
-    height: 25px;
+    margin-right: 5px;
   }
 }
 
 .task_deleteButton:hover {
-  background: var(--darkPink);
-}
-
-.task_deleteButton:focus {
-  border: 2px solid var(--mediumPink);
+  background-color: var(--darkPink);
 }
 
 .task_deleteButton-img {
-  width: 30px;
-  height: 38px;
+  width: 25px;
+  height: 30px;
 }
 
 @media screen and (max-width: 1339px) {
   .task_deleteButton-img {
-    width: 22px;
-    height: 28px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .task_deleteButton-img {
-    width: 19px;
-    height: 25px;
+    width: 18px;
+    height: 22px;
   }
 }
 
 .task_editButton {
   border: none;
+  outline: none;
   background-color: transparent;
   width: 38px;
   height: 38px;
+  padding: 0;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1339px) {
   .task_editButton {
     width: 28px;
     height: 28px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .task_editButton {
-    width: 25px;
-    height: 25px;
   }
 }
 
 .task_editButton:hover {
   background: var(--darkPink);
-  border-radius: 50%;
-}
-
-.task_editButton:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--mediumPink);
-  border-radius: 50%;
 }
 
 .task_editButton-img {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
 }
 
 @media screen and (max-width: 1339px) {
   .task_editButton-img {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .task_editButton-img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
   }
 }

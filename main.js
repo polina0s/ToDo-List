@@ -5,9 +5,7 @@ function bootstrap() {
   const buttonAdd = document.querySelector("#taskInput_buttonAdd");
   const tasksList = document.querySelector("#tasksList");
   let tasks = [];
-
-  taskInput.addEventListener("input", (e) => console.log(e.target.value));
-  buttonAdd.addEventListener("click", (e) => {
+  function addDelete() {
     if (taskInput.value !== "") {
       tasks.push(taskInput.value);
 
@@ -37,16 +35,29 @@ function bootstrap() {
       taskInput.value = "";
 
       const deleteButton = task.querySelector(`[data-id="task_deleteButton"]`);
+      const taskString = task.querySelector(`[data-id="task_textString"]`);
 
       deleteButton.addEventListener("click", (e) => {
         task.remove();
       });
 
-      // TODO: selector на клик лейбла, находить в нем чекбокс и переключать состояние
-      const checkbox = task.querySelector(`label`);
+      const checkbox = task.querySelector(`input`);
       checkbox.addEventListener("click", (e) => {
-        console.log(checkbox.querySelector("input"));
+        console.log(11111);
+        if (checkbox.checked) {
+          taskString.setAttribute("disabled", "disabled");
+        } else {
+          taskString.removeAttribute("disabled");
+        }
       });
+    }
+  }
+
+  taskInput.addEventListener("input", (e) => console.log(e.target.value));
+  buttonAdd.addEventListener("click", addDelete);
+  taskInput.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+      addDelete();
     }
   });
 }

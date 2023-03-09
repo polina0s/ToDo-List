@@ -14,27 +14,24 @@ function bootstrap() {
       const task = document.createElement("div");
       task.classList.add("task");
       task.innerHTML = `<div class="task_checkbox">
-// TODO: fix
-        <label>
-          <input
-            type="checkbox"
-            class="task_checkbox-custom"
-          />    
-          </label>
-        </div>
-        <input
-          type="text"
-          class="task_textString"
-          data-id="task_textString"
-          value='${taskInput.value}'
+        <label class="task_checkbox-custom">
+          <input type="checkbox" />
+          <span></span>
+        </label>
+      </div>
+      <input
+        type="text"
+        class="task_textString"
+        data-id="task_textString"
+        value="${taskInput.value}"
+      />
+      <button class="task_deleteButton" data-id="task_deleteButton">
+        <image
+          src="/public/delete.png"
+          alt="delete task"
+          class="task_deleteButton-img"
         />
-        <button class="task_deleteButton" data-id="task_deleteButton">
-          <image
-            src="/public/delete.png"
-            alt="delete task"
-            class="task_deleteButton-img"
-          />
-        </button>`;
+      </button>`;
       tasksList.append(task);
 
       taskInput.value = "";

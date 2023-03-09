@@ -8,7 +8,7 @@
 
   /* COLORS */
   --background: #fff0f5;
-  --mediumPink: rgb(253, 194, 214);
+  --mediumPink: rgb(255, 209, 224);
   --darkPink: rgb(255, 182, 206);
   --white: #ffffff;
 }
@@ -143,19 +143,18 @@ html {
 
 /* TASK STRING */
 
-.task_checkbox-custom {
+.task {
+  display: flex;
+  justify-content: center;
+}
+
+.task_checkbox-custom > input {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
 
-.task_checkbox-custom + label {
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
-}
-
-.task_checkbox-custom + label::before {
+.task_checkbox-custom > span::before {
   content: "";
   display: inline-block;
   width: 36px;
@@ -169,10 +168,11 @@ html {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1339px) {
-  .task_checkbox-custom + label::before {
+  .task_checkbox-custom > span::before {
     width: 26px;
     height: 26px;
     margin-right: 7px;
@@ -180,30 +180,22 @@ html {
 }
 
 @media screen and (max-width: 767px) {
-  .task_checkbox-custom + label::before {
-    width: 23px;
-    height: 23px;
+  .task_checkbox-custom > span::before {
     margin-right: 5px;
   }
 }
 
-.task_checkbox-custom:checked + label::before {
+.task_checkbox-custom
+  > input:not(:disabled):not(:checked)
+  + span:hover::before {
+  border-color: var(--darkPink);
+  background-color: var(--mediumPink);
+}
+
+.task_checkbox-custom > input:checked + span::before {
+  border-color: var(--darkPink);
   background-color: var(--background);
   background-image: url(./public/checked.png);
-}
-
-/* при наведении на checkbox */
-.task_checkbox-custom:not(:disabled):not(:checked) + label:hover::before {
-  border-color: var(--white);
-}
-/* checkbox в фокусе */
-.task_checkbox-custom:focus + label::before {
-  box-shadow: 0 0 0 0.2rem var(--white);
-}
-
-.task {
-  display: flex;
-  justify-content: center;
 }
 
 .task_textString {

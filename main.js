@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", bootstrap);
 
-function createTask(text) {
+function createTask(text, checked) {
   const task = document.createElement("div");
+
   task.classList.add("task");
   task.innerHTML = `<div class="task_checkbox">
         <label class="task_checkbox-custom">
-          <input type="checkbox" />
+          <input type="checkbox" ${checked ? "checked" : ""} />
           <span></span>
         </label>
       </div>
@@ -39,6 +40,12 @@ function createTask(text) {
     }
   });
 
+  // taskString.addEventListener("input", (e) => {
+  //   let newValue = e.target.value;
+  //   console.log(newValue);
+  //   taskString.setAttribute("value", `${newValue}`);
+  // });
+
   return task;
 }
 
@@ -50,7 +57,7 @@ function bootstrap() {
   let tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
 
   for (let i = 0; i < tasks.length; i++) {
-    const task = createTask(tasks[i].text);
+    const task = createTask(tasks[i].text, tasks[i].checked);
     tasksList.append(task);
   }
 
@@ -61,7 +68,7 @@ function bootstrap() {
         checked: false,
       });
 
-      const task = createTask(taskInput.value);
+      const task = createTask(taskInput.value, false);
       tasksList.append(task);
 
       localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -76,5 +83,20 @@ function bootstrap() {
     if (e.code === "Enter") {
       addTask();
     }
+  });
+
+  const taskString = document.querySelector(".task_textString");
+  taskString.addEventListener("input", (e) => {
+    let newValue = e.target.value;
+    console.log(newValue);
+
+    tasks.push({
+      text: e.target.value,
+      checked: false,
+    });
+
+    localStorage.setItem("tasks", JSON.stringify( ));
+
+    taskString.setAttribute("value", `${newValue}`);
   });
 }

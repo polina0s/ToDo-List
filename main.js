@@ -56,7 +56,12 @@ function createTask(data) {
   disableInput(data.checked);
 
   deleteButton.addEventListener("click", (e) => {
+    const newList = tasks.filter((value) => {
+      return value.id !== task.id;
+    });
     task.remove();
+    localStorage.setItem("tasks", JSON.stringify(newList));
+    tasks = newList;
   });
 
   const checkbox = task.querySelector(`input`);

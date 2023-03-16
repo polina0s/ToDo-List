@@ -7,7 +7,6 @@ class Task {
     this.text = data.text;
     this.checked = data.checked;
     this.task = document.createElement("div");
-    this.tasks = taskStorage.tasks;
 
     this.createTask();
 
@@ -47,6 +46,7 @@ class Task {
     const checkbox = this.task.querySelector(`input`);
     checkbox.addEventListener("click", (e) => {
       let newState = e.target.checked;
+      this.tasks = taskStorage.getTasks();
 
       this.disableInput(newState);
 
@@ -79,9 +79,10 @@ class Task {
   }
 
   editTaskText() {
-    console.log(this.taskString);
     this.taskString.addEventListener("input", (e) => {
       let newValue = e.target.value;
+      this.tasks = taskStorage.getTasks();
+
       const updatedTaskData = this.tasks.find(
         (value) => value.id === this.task.id
       );
@@ -103,7 +104,9 @@ class Task {
     const deleteButton = this.task.querySelector(
       `[data-id="task_deleteButton"]`
     );
+
     deleteButton.addEventListener("click", (e) => {
+      this.tasks = taskStorage.getTasks();
       const newList = this.tasks.filter((value) => {
         return value.id !== this.task.id;
       });

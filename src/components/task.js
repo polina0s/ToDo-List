@@ -3,13 +3,11 @@ import { taskStorage } from "../lib/task-storage";
 
 class Task {
   constructor(data) {
-    this.id = data?.id ?? makeid();
-    this.text = data.text;
-    this.checked = data.checked;
-
-    this.element = document.createElement("div");
-
-    this.createTask();
+    this.createTaskElement({
+      id: data?.id ?? makeid(),
+      text: data.text,
+      checked: data.checked,
+    });
 
     this.taskText = this.element.querySelector(`[data-id="taskText"]`);
     this.checkbox = this.element.querySelector(`[data-id="checkbox"]`);
@@ -17,19 +15,24 @@ class Task {
       `[data-id="task_deleteButton"]`
     );
 
-    this.disableInput(this.checked);
+    this.disableInput(data.checked);
+    this.listenEvents();
+  }
+
+  listenEvents() {
     this.addEditEvent();
     this.addDeleteEvent();
     this.addCheckEvent();
   }
 
-  createTask() {
+  createTaskElement({ checked, text, id }) {
+    this.element = document.createElement("div");
     this.element.classList.add("task");
-    this.element.id = this.id;
+    this.element.id = id;
     this.element.innerHTML = `<div class="task_checkbox">
         <label class="task_checkbox-custom">
           <input type="checkbox" data-id="checkbox" ${
-            this.checked ? "checked" : ""
+            checked ? "checked" : ""
           } />
           <span></span>
         </label>
@@ -38,7 +41,7 @@ class Task {
         type="text"
         class="task_textString"
         data-id="taskText"
-        value="${this.text}"
+        value="${text}"
       />
       <button class="task_deleteButton" data-id="task_deleteButton">
         <image
@@ -47,6 +50,8 @@ class Task {
           class="task_deleteButton-img"
         />
       </button>`;
+
+    return this.element;
   }
 
   addCheckEvent() {

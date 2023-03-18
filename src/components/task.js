@@ -28,6 +28,32 @@ class Task {
     );
   }
 
+  filterTasksById() {
+    this.tasks = taskStorage.getTasks();
+    const newList = this.tasks.filter((value) => {
+      return value.id !== this.element.id;
+    });
+    return newList;
+  }
+
+  findTaskInStorageById() {
+    this.tasks = taskStorage.getTasks();
+    const taskData = this.tasks.find((value) => value.id === this.element.id);
+    return taskData;
+  }
+
+  updateTaskList(updatedTaskData) {
+    this.tasks = this.tasks.map((value) => {
+      if (value.id === this.element.id) {
+        return updatedTaskData;
+      } else {
+        return value;
+      }
+    });
+
+    taskStorage.setTasks(this.tasks);
+  }
+
   createTaskElement({ checked, text, id }) {
     this.element = document.createElement("div");
     this.element.classList.add("task");
@@ -87,32 +113,6 @@ class Task {
     this.taskText.addEventListener("input", (e) =>
       this.editTaskText(e.target.value)
     );
-  }
-
-  findTaskInStorageById() {
-    this.tasks = taskStorage.getTasks();
-    const taskData = this.tasks.find((value) => value.id === this.element.id);
-    return taskData;
-  }
-
-  filterTasksById() {
-    this.tasks = taskStorage.getTasks();
-    const newList = this.tasks.filter((value) => {
-      return value.id !== this.element.id;
-    });
-    return newList;
-  }
-
-  updateTaskList(updatedTaskData) {
-    this.tasks = this.tasks.map((value) => {
-      if (value.id === this.element.id) {
-        return updatedTaskData;
-      } else {
-        return value;
-      }
-    });
-
-    taskStorage.setTasks(this.tasks);
   }
 
   editTaskText(value) {

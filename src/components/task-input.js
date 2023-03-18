@@ -35,7 +35,7 @@ class TaskInput {
       storageTasks.push({
         text: value,
         checked: false,
-        id: task.id,
+        id: task.element.id,
       });
 
       taskStorage.setTasks(storageTasks);

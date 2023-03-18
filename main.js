@@ -1,42 +1,26 @@
-// import { makeid } from "./src/lib/make-id";
+import { TaskList } from "./src/components/task-list";
 import { taskStorage } from "./src/lib/task-storage";
+import { TaskInput } from "./src/components/task-input";
 import { Task } from "./src/components/task";
-document.addEventListener("DOMContentLoaded", bootstrap);
-
-let tasks = taskStorage.getTasks();
 
 function bootstrap() {
-  const taskInput = document.querySelector("#taskInput_text");
-  const buttonAdd = document.querySelector("#taskInput_buttonAdd");
-  const tasksList = document.querySelector("#tasksList");
+  // taskInput.addTask();
 
-  for (let i = 0; i < tasks.length; i++) {
-    const task = new Task(tasks[i]);
-    tasksList.append(task.task);
-  }
+  const taskList = new TaskList();
+  const taskInput = new TaskInput({
+    onTaskCreate: taskList.appendTask.bind(taskList),
+  });
 
-  function addTask() {
-    if (taskInput.value !== "") {
-      const task = new Task({ text: taskInput.value, checked: false });
+  renderInitialTasks(taskList);
+}
 
-      tasks.push({
-        text: taskInput.value,
-        checked: false,
-        id: task.id,
-      });
+function renderInitialTasks(taskList) {
+  const initialTasks = taskStorage.getTasks();
 
-      tasksList.append(task.task);
-
-      taskStorage.setTasks(tasks);
-
-      taskInput.value = "";
-    }
-  }
-
-  buttonAdd.addEventListener("click", addTask);
-  taskInput.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
-      addTask();
-    }
+  initialTasks.forEach((taskData) => {
+    const task = new Task(taskData);
+    taskList.appendTask(task.element);
   });
 }
+
+document.addEventListener("DOMContentLoaded", bootstrap);

@@ -6,31 +6,39 @@ class Task {
     this.id = data?.id ?? makeid();
     this.text = data.text;
     this.checked = data.checked;
-    this.task = document.createElement("div");
+
+    // element
+    this.element = document.createElement("div");
 
     this.createTask();
 
-    this.taskString = this.task.querySelector(`[data-id="task_textString"]`);
+    this.taskText = this.element.querySelector(`[data-id="taskText"]`);
+    this.checkbox = this.element.querySelector(`[data-id="checkbox"]`);
+    this.deleteButton = this.element.querySelector(
+      `[data-id="task_deleteButton"]`
+    );
 
     this.disableInput(this.checked);
-    this.editTaskText();
-    this.deleteTask();
-    this.checkbox();
+    this.addEditEvent();
+    this.addDeleteEvent();
+    this.addCheckEvent();
   }
 
   createTask() {
-    this.task.classList.add("task");
-    this.task.id = this.id;
-    this.task.innerHTML = `<div class="task_checkbox">
+    this.element.classList.add("task");
+    this.element.id = this.id;
+    this.element.innerHTML = `<div class="task_checkbox">
         <label class="task_checkbox-custom">
-          <input type="checkbox" ${this.checked ? "checked" : ""} />
+          <input type="checkbox" data-id="checkbox" ${
+            this.checked ? "checked" : ""
+          } />
           <span></span>
         </label>
       </div>
       <input
         type="text"
         class="task_textString"
-        data-id="task_textString"
+        data-id="taskText"
         value="${this.text}"
       />
       <button class="task_deleteButton" data-id="task_deleteButton">
@@ -42,77 +50,78 @@ class Task {
       </button>`;
   }
 
-  checkbox() {
-    const checkbox = this.task.querySelector(`input`);
-    checkbox.addEventListener("click", (e) => {
-      let newState = e.target.checked;
-      this.tasks = taskStorage.getTasks();
+  addCheckEvent() {
+    this.checkbox.addEventListener("click", (e) =>
+      this.checkTask(e.target.checked)
+    );
+  }
 
-      this.disableInput(newState);
+  checkTask(checked) {
+    this.tasks = taskStorage.getTasks();
 
-      const updatedState = this.tasks.find(
-        (value) => value.id === this.task.id
-      );
+    this.disableInput(checked);
 
-      if (updatedState) {
-        updatedState.checked = newState;
+    const updatedState = this.tasks.find((value) => value.id === this.element.id);
 
-        this.tasks = this.tasks.map((value) => {
-          if (value.id === this.task.id) {
-            return updatedState;
-          } else {
-            return value;
-          }
-        });
+    if (updatedState) {
+      updatedState.checked = checked;
 
-        taskStorage.setTasks(this.tasks);
-      }
-    });
+      this.tasks = this.tasks.map((value) => {
+        if (value.id === this.element.id) {
+          return updatedState;
+        } else {
+          return value;
+        }
+      });
+
+      taskStorage.setTasks(this.tasks);
+    }
   }
 
   disableInput(shouldDisable) {
     if (shouldDisable) {
-      this.taskString.setAttribute("disabled", "disabled");
+      this.taskText.setAttribute("disabled", "disabled");
     } else {
-      this.taskString.removeAttribute("disabled");
+      this.taskText.removeAttribute("disabled");
     }
   }
 
-  editTaskText() {
-    this.taskString.addEventListener("input", (e) => {
-      let newValue = e.target.value;
-      this.tasks = taskStorage.getTasks();
+  addEditEvent() {
+    this.taskText.addEventListener("input", (e) =>
+      this.editTaskText(e.target.value)
+    );
+  }
 
-      const updatedTaskData = this.tasks.find(
-        (value) => value.id === this.task.id
-      );
-      if (updatedTaskData) {
-        updatedTaskData.text = newValue;
-        this.tasks = this.tasks.map((value) => {
-          if (value.id === this.task.id) {
-            return updatedTaskData;
-          } else {
-            return value;
-          }
-        });
-        taskStorage.setTasks(this.tasks);
-      }
-    });
+  editTaskText(value) {
+    this.tasks = taskStorage.getTasks();
+
+    const updatedTaskData = this.tasks.find(
+      (value) => value.id === this.element.id
+    );
+    if (updatedTaskData) {
+      updatedTaskData.text = value;
+      this.tasks = this.tasks.map((value) => {
+        if (value.id === this.element.id) {
+          return updatedTaskData;
+        } else {
+          return value;
+        }
+      });
+      taskStorage.setTasks(this.tasks);
+    }
+  }
+
+  addDeleteEvent() {
+    this.deleteButton.addEventListener("click", () => this.deleteTask());
   }
 
   deleteTask() {
-    const deleteButton = this.task.querySelector(
-      `[data-id="task_deleteButton"]`
-    );
-
-    deleteButton.addEventListener("click", (e) => {
-      this.tasks = taskStorage.getTasks();
-      const newList = this.tasks.filter((value) => {
-        return value.id !== this.task.id;
-      });
-      this.task.remove();
-      taskStorage.setTasks(newList);
+    this.tasks = taskStorage.getTasks();
+    const newList = this.tasks.filter((value) => {
+      return value.id !== this.element.id;
     });
+    this.element.remove();
+    taskStorage.setTasks(newList);
   }
 }
 

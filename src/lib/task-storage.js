@@ -1,17 +1,18 @@
 class TaskStorage {
   constructor() {
     this.getTasks();
+    this.name = "tasks";
   }
 
   getTasks() {
     this.tasks =
-      JSON.parse(localStorage.getItem("tasks") ?? JSON.stringify([])) || [];
+      JSON.parse(localStorage.getItem(this.name) ?? JSON.stringify([])) || [];
     return this.tasks;
   }
 
   setTasks(arr) {
     this.tasks = arr;
-    return localStorage.setItem("tasks", JSON.stringify(arr));
+    return localStorage.setItem(this.name, JSON.stringify(arr));
   }
 }
 

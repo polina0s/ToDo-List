@@ -56,26 +56,14 @@ class Task {
   }
 
   checkTask(checked) {
-    this.tasks = taskStorage.getTasks();
-
     this.disableInput(checked);
 
-    const updatedState = this.tasks.find(
-      (value) => value.id === this.element.id
-    );
+    const updatedState = this.findTaskInStorageById();
 
     if (updatedState) {
       updatedState.checked = checked;
 
-      this.tasks = this.tasks.map((value) => {
-        if (value.id === this.element.id) {
-          return updatedState;
-        } else {
-          return value;
-        }
-      });
-
-      taskStorage.setTasks(this.tasks);
+      this.updateTaskList(updatedState);
     }
   }
 
@@ -93,22 +81,39 @@ class Task {
     );
   }
 
-  editTaskText(value) {
+  findTaskInStorageById() {
     this.tasks = taskStorage.getTasks();
+    const taskData = this.tasks.find((value) => value.id === this.element.id);
+    return taskData;
+  }
 
-    const updatedTaskData = this.tasks.find(
-      (value) => value.id === this.element.id
-    );
+  filterTasksById() {
+    this.tasks = taskStorage.getTasks();
+    const newList = this.tasks.filter((value) => {
+      return value.id !== this.element.id;
+    });
+    return newList;
+  }
+
+  updateTaskList(updatedTaskData) {
+    this.tasks = this.tasks.map((value) => {
+      if (value.id === this.element.id) {
+        return updatedTaskData;
+      } else {
+        return value;
+      }
+    });
+
+    taskStorage.setTasks(this.tasks);
+  }
+
+  editTaskText(value) {
+    const updatedTaskData = this.findTaskInStorageById();
+
     if (updatedTaskData) {
       updatedTaskData.text = value;
-      this.tasks = this.tasks.map((value) => {
-        if (value.id === this.element.id) {
-          return updatedTaskData;
-        } else {
-          return value;
-        }
-      });
-      taskStorage.setTasks(this.tasks);
+
+      this.updateTaskList(updatedTaskData);
     }
   }
 
@@ -117,10 +122,8 @@ class Task {
   }
 
   deleteTask() {
-    this.tasks = taskStorage.getTasks();
-    const newList = this.tasks.filter((value) => {
-      return value.id !== this.element.id;
-    });
+    const newList = this.filterTasksById();
+
     this.element.remove();
     taskStorage.setTasks(newList);
   }

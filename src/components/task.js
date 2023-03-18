@@ -7,7 +7,6 @@ class Task {
     this.text = data.text;
     this.checked = data.checked;
 
-    // element
     this.element = document.createElement("div");
 
     this.createTask();
@@ -61,7 +60,9 @@ class Task {
 
     this.disableInput(checked);
 
-    const updatedState = this.tasks.find((value) => value.id === this.element.id);
+    const updatedState = this.tasks.find(
+      (value) => value.id === this.element.id
+    );
 
     if (updatedState) {
       updatedState.checked = checked;

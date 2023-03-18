@@ -1,5 +1,6 @@
 import { makeid } from "../lib/make-id";
 import { taskStorage } from "../lib/task-storage";
+import deleteImg from "../public/pictures/delete.png";
 
 class Task {
   constructor(data) {
@@ -74,7 +75,7 @@ class Task {
       />
       <button class="task_deleteButton" data-id="task_deleteButton">
         <image
-          src="/public/delete.png"
+          src="${deleteImg}"
           alt="delete task"
           class="task_deleteButton-img"
         />

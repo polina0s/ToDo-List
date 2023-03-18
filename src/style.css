@@ -1,4 +1,4 @@
-@import url(/src/fonts/fonts.css);
+@import url(./public/fonts/fonts.css);
 @import url(/node_modules/normalize.css/);
 
 :root {
@@ -195,7 +195,7 @@ html {
 .task_checkbox-custom > input:checked + span::before {
   border-color: var(--darkPink);
   background-color: var(--background);
-  background-image: url(./public/checked.png);
+  background-image: url(./public/pictures/checked.png);
 }
 
 .task_textString {

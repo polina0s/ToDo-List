@@ -1,7 +1,7 @@
-import { TaskList } from "./src/components/task-list";
-import { taskStorage } from "./src/lib/task-storage";
-import { TaskInput } from "./src/components/task-input";
-import { Task } from "./src/components/task";
+import { TaskList } from "./components/task-list";
+import { taskStorage } from "./lib/task-storage";
+import { TaskInput } from "./components/task-input";
+import { Task } from "./components/task";
 
 function bootstrap() {
   const taskList = new TaskList();

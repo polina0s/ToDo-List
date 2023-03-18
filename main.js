@@ -4,10 +4,8 @@ import { TaskInput } from "./src/components/task-input";
 import { Task } from "./src/components/task";
 
 function bootstrap() {
-  // taskInput.addTask();
-
   const taskList = new TaskList();
-  const taskInput = new TaskInput({
+  new TaskInput({
     onTaskCreate: taskList.appendTask.bind(taskList),
   });
 

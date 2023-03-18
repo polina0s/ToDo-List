@@ -9,12 +9,7 @@ class Task {
       checked: data.checked,
     });
 
-    this.taskText = this.element.querySelector(`[data-id="taskText"]`);
-    this.checkbox = this.element.querySelector(`[data-id="checkbox"]`);
-    this.deleteButton = this.element.querySelector(
-      `[data-id="task_deleteButton"]`
-    );
-
+    this.createSelectors();
     this.disableInput(data.checked);
     this.listenEvents();
   }
@@ -23,6 +18,14 @@ class Task {
     this.addEditEvent();
     this.addDeleteEvent();
     this.addCheckEvent();
+  }
+
+  createSelectors() {
+    this.taskText = this.element.querySelector(`[data-id="taskText"]`);
+    this.checkbox = this.element.querySelector(`[data-id="checkbox"]`);
+    this.deleteButton = this.element.querySelector(
+      `[data-id="task_deleteButton"]`
+    );
   }
 
   createTaskElement({ checked, text, id }) {
